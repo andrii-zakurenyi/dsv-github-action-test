@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Read secret
         id: get
-        uses: andrii-zakurenyi/secret-vault-github-action-plugin@v2.2
+        uses: andrii-zakurenyi/secret-vault-github-action-plugin@v0.1.0
         with:
           server: ${{ secrets.DSV_SERVER }}
           clientId: ${{ secrets.DSV_CLIENT_ID }}
