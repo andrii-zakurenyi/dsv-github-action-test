@@ -14,8 +14,6 @@ jobs:
           server: ${{ secrets.DSV_SERVER }}
           clientId: ${{ secrets.DSV_CLIENT_ID }}
           clientSecret: ${{ secrets.DSV_CLIENT_SECRET }}
-          secretPath: ${{ secrets.DSV_SECRET_PATH }}
-          secretDataKey: ${{ secrets.DSV_SECRET_DATA_KEY }}
           setEnv: true
           retrieve: |
             ${{ secrets.DSV_SECRET_PATH }} ${{ secrets.DSV_SECRET_DATA_KEY }} AS myVal1
