@@ -9,16 +9,20 @@ jobs:
     steps:
       - name: Read secret
         id: get
-        uses: andrii-zakurenyi/secret-vault-github-action-plugin@v0.8.0
+        uses: andrii-zakurenyi/secret-vault-github-action-plugin@v0.10.0
         with:
           server: ${{ secrets.DSV_SERVER }}
           clientId: ${{ secrets.DSV_CLIENT_ID }}
           clientSecret: ${{ secrets.DSV_CLIENT_SECRET }}
           secretPath: ${{ secrets.DSV_SECRET_PATH }}
           secretDataKey: ${{ secrets.DSV_SECRET_DATA_KEY }}
+          setEnv: true
+          retrieve: |
+            ${{ secrets.DSV_SECRET_PATH }} ${{ secrets.DSV_SECRET_DATA_KEY }} AS myVal1
+            ${{ secrets.DSV_SECRET_PATH }} ${{ secrets.DSV_SECRET_DATA_KEY }} AS myVal2
 
       - name: Print secret
-        run: echo ${{ steps.get.outputs.secretVal }}
+        run: echo ${{ steps.get.outputs.myVal1 }}
 
       - name: Print secret from env
-        run: echo ${{ env.secretEnvVal }}
+        run: echo ${{ env.myVal2 }}
